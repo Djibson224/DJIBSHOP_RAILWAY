@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DjibShop | Matelas de qualité en Guinée</title>
+  <meta name="description" content="DjibShop vend des matelas neufs et d'occasion avec livraison partout en Guinée.">
+  <meta name="theme-color" content="#14324a">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="topbar">
+    <span id="delivery-text">Livraison partout en Guinée</span>
+    <div class="topbar-links">
+      <a id="phone-link" href="tel:+224610492345">+224 610 49 23 45</a>
+      <a id="whatsapp-link" href="https://wa.me/224610492345" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <button class="brand" data-page="home">Djib<span>Shop</span></button>
+    <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="main-nav">Menu</button>
+    <nav class="main-nav" id="main-nav">
+      <button class="nav-link active" data-page="home">Accueil</button>
+      <button class="nav-link" data-page="catalog">Catalogue</button>
+      <button class="nav-link" data-page="contact">Contact</button>
+      <button class="nav-link" data-page="about">À propos</button>
+      <button class="nav-link nav-admin" data-page="admin">+</button>
+      <div class="shop-switcher">
+        <button class="shop-switcher-btn" id="shop-switcher-btn">🛍️ Boutiques ▾</button>
+        <div class="shop-switcher-menu hidden" id="shop-switcher-menu">
+          <a href="/matelas" class="shop-switcher-item active-shop">🛏️ Matelas</a>
+          <a href="/meubles" class="shop-switcher-item">🛋️ Meubles</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page active" id="page-home">
+      <section class="hero" id="home-hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Confort, confiance, livraison rapide</p>
+          <h1>Dormez mieux avec des matelas sélectionnés pour la Guinée.</h1>
+          <p id="hero-subheadline">Des matelas neufs et d'occasion adaptés à votre budget, livrés avec accompagnement avant et après commande.</p>
+          <div class="hero-actions">
+            <button class="btn btn-primary" data-page="catalog">Voir le catalogue</button>
+            <a class="btn btn-secondary" id="hero-whatsapp" href="https://wa.me/224610492345" target="_blank" rel="noopener noreferrer">Commander par WhatsApp</a>
+          </div>
+          <div class="hero-stats" id="hero-stats"></div>
+        </div>
+        <div class="hero-card">
+          <h2>Pourquoi choisir DjibShop</h2>
+          <ul class="bullet-list">
+            <li>Conseil simple selon votre budget et votre espace.</li>
+            <li>Livraison organisée dans Conakry et en région.</li>
+            <li>Choix entre neuf, occasion et plusieurs tailles.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker">Sélection</p>
+            <h2>Produits en vedette</h2>
+          </div>
+          <button class="text-link" data-page="catalog">Voir tout</button>
+        </div>
+        <div class="filter-row" id="home-filters"></div>
+        <div class="card-grid" id="home-products"></div>
+      </section>
+
+      <section class="contact-band">
+        <div>
+          <p class="section-kicker light">Accompagnement</p>
+          <h2>Besoin d'aide pour choisir le bon matelas ?</h2>
+          <p>Expliquez-nous votre taille, votre budget et le type de confort recherché.</p>
+        </div>
+        <div class="contact-band-actions">
+          <a class="btn btn-accent" id="contact-band-whatsapp" href="https://wa.me/224610492345" target="_blank" rel="noopener noreferrer">Écrire sur WhatsApp</a>
+          <a class="btn btn-ghost" id="contact-band-call" href="tel:+224620744703">Appeler</a>
+        </div>
+      </section>
+    </section>
+
+    <section class="page" id="page-catalog">
+      <section class="section">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker">Catalogue</p>
+            <h2>Tous les matelas</h2>
+          </div>
+          <p class="muted" id="catalog-count">0 produit</p>
+        </div>
+        <div class="catalog-toolbar">
+          <label class="field inline-field">
+            <span>Recherche</span>
+            <input type="search" id="catalog-search" placeholder="Nom, type, taille, dimensions">
+          </label>
+          <label class="field inline-field">
+            <span>Trier</span>
+            <select id="catalog-sort">
+              <option value="featured">Recommandés d'abord</option>
+              <option value="price-asc">Prix croissant</option>
+              <option value="price-desc">Prix décroissant</option>
+              <option value="rating-desc">Mieux notés</option>
+              <option value="newest">Plus récents</option>
+            </select>
+          </label>
+          <label class="field inline-field">
+            <span>Disponibilité</span>
+            <select id="catalog-stock">
+              <option value="all">Tous les stocks</option>
+              <option value="En stock">En stock</option>
+              <option value="Stock limité">Stock limité</option>
+              <option value="Sur commande">Sur commande</option>
+            </select>
+          </label>
+        </div>
+        <div class="filter-row" id="catalog-filters"></div>
+        <div class="catalog-summary" id="catalog-summary"></div>
+        <div class="card-grid" id="catalog-products"></div>
+      </section>
+    </section>
+
+    <section class="page" id="page-contact">
+      <section class="section narrow">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker">Contact</p>
+            <h2>Parlons de votre besoin</h2>
+          </div>
+        </div>
+        <div class="contact-layout">
+          <div class="info-card">
+            <h3>Coordonnées</h3>
+            <p>Nous répondons rapidement aux demandes de prix, disponibilité et livraison.</p>
+            <div class="contact-stack">
+              <a id="contact-phone-primary" href="tel:+224610492345">+224 610 49 23 45</a>
+              <a id="contact-phone-secondary" href="tel:+224620744703">+224 620 74 47 03</a>
+              <a id="contact-wa-primary" href="https://wa.me/224610492345" target="_blank" rel="noopener noreferrer">WhatsApp direct</a>
+            </div>
+          </div>
+          <form class="panel" id="contact-form">
+            <h3>Laisser un message</h3>
+            <label class="field">
+              <span>Nom complet</span>
+              <input type="text" name="full_name" required>
+            </label>
+            <label class="field">
+              <span>Téléphone</span>
+              <input type="tel" name="phone" required>
+            </label>
+            <label class="field">
+              <span>Message</span>
+              <textarea name="message" rows="5" required></textarea>
+            </label>
+            <button class="btn btn-primary" type="submit">Envoyer le message</button>
+          </form>
+        </div>
+      </section>
+    </section>
+
+    <section class="page" id="page-about">
+      <section class="section">
+        <div class="about-hero">
+          <div>
+            <p class="section-kicker">À propos</p>
+            <h2>Une boutique pensée pour la confiance et la simplicité</h2>
+            <p id="about-body">DjibShop aide les familles, particuliers et professionnels à trouver des matelas adaptés à leur confort et à leur budget.</p>
+          </div>
+        </div>
+        <div class="about-grid">
+          <article class="panel">
+            <h3>Ce que nous faisons</h3>
+            <p>Nous proposons des matelas neufs et d'occasion, des tailles variées et un accompagnement humain avant l'achat.</p>
+          </article>
+          <article class="panel">
+            <h3>Ce qui compte pour nous</h3>
+            <p>Des informations claires, des prix cohérents, des délais annoncés honnêtement et un suivi après commande.</p>
+          </article>
+          <article class="panel">
+            <h3>Livraison</h3>
+            <p>Conakry et plusieurs villes de Guinée, avec confirmation téléphonique avant expédition.</p>
+          </article>
+        </div>
+      </section>
+    </section>
+
+    <section class="page" id="page-admin">
+      <section class="section">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker">Administration</p>
+            <h2>Piloter la boutique</h2>
+          </div>
+        </div>
+
+        <div class="panel admin-login-panel" id="admin-login-panel">
+          <form id="admin-login-form">
+            <h3>Connexion admin</h3>
+            <p class="muted">Connectez-vous pour gérer les produits, commandes et messages.</p>
+            <label class="field">
+              <span>Utilisateur</span>
+              <input type="text" name="username" value="admin" required>
+            </label>
+            <label class="field">
+              <span>Mot de passe</span>
+              <input type="password" name="password" required>
+            </label>
+            <button class="btn btn-primary" type="submit">Se connecter</button>
+          </form>
+        </div>
+
+        <div class="admin-shell hidden" id="admin-shell">
+          <div class="metrics" id="metrics"></div>
+          <div class="admin-toolbar">
+            <div class="tab-row">
+              <button class="tab-btn active" data-admin-tab="products">Produits</button>
+              <button class="tab-btn" data-admin-tab="orders">Commandes</button>
+              <button class="tab-btn" data-admin-tab="contacts">Messages</button>
+              <button class="tab-btn" data-admin-tab="editor">Ajouter / modifier</button>
+            </div>
+            <button class="btn btn-secondary" id="admin-logout-btn">Déconnexion</button>
+          </div>
+
+          <section class="admin-tab active" id="admin-tab-products">
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Produit</th>
+                    <th>Catégorie</th>
+                    <th>Type</th>
+                    <th>Taille</th>
+                    <th>Prix</th>
+                    <th>Stock</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-products-table"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="admin-tab" id="admin-tab-orders">
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Client</th>
+                    <th>Produit</th>
+                    <th>Ville</th>
+                    <th>Paiement</th>
+                    <th>Statut</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-orders-table"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="admin-tab" id="admin-tab-contacts">
+            <div class="message-list" id="admin-contacts-list"></div>
+          </section>
+
+          <section class="admin-tab" id="admin-tab-editor">
+            <form class="panel" id="product-form">
+              <h3 id="product-form-title">Ajouter un produit</h3>
+              <input type="hidden" name="id">
+              <div class="form-grid">
+                <label class="field">
+                  <span>Nom</span>
+                  <input type="text" name="name" required>
+                </label>
+                <label class="field">
+                  <span>Prix (GNF)</span>
+                  <input type="number" name="price_gnf" required>
+                </label>
+                <label class="field">
+                  <span>Catégorie</span>
+                  <select name="category" required>
+                    <option value="neuf">Neuf</option>
+                    <option value="occasion">Occasion</option>
+                  </select>
+                </label>
+                <label class="field">
+                  <span>Type</span>
+                  <select name="mattress_type" required>
+                    <option value="ressort">Avec ressort</option>
+                    <option value="peu de ressort">Peu de ressort</option>
+                    <option value="sans ressort">Sans ressort</option>
+                  </select>
+                </label>
+                <label class="field">
+                  <span>Taille</span>
+                  <select name="size_label" required>
+                    <option value="1 place">1 place</option>
+                    <option value="2 places">2 places</option>
+                    <option value="3 places">3 places</option>
+                    <option value="4 places">4 places</option>
+                  </select>
+                </label>
+                <label class="field">
+                  <span>Dimensions</span>
+                  <input type="text" name="dimensions" placeholder="160 x 200 cm" required>
+                </label>
+                <label class="field">
+                  <span>Note</span>
+                  <input type="number" name="rating" min="0" max="5" step="0.1" value="0">
+                </label>
+                <label class="field">
+                  <span>Nombre d'avis</span>
+                  <input type="number" name="review_count" min="0" value="0">
+                </label>
+                <label class="field">
+                  <span>Stock</span>
+                  <select name="stock_status" required>
+                    <option value="En stock">En stock</option>
+                    <option value="Stock limité">Stock limité</option>
+                    <option value="Sur commande">Sur commande</option>
+                  </select>
+                </label>
+                <label class="field check">
+                  <span>Mettre en vedette</span>
+                  <input type="checkbox" name="featured">
+                </label>
+              </div>
+              <label class="field">
+                <span>Description</span>
+                <textarea name="description" rows="4" required></textarea>
+              </label>
+              <label class="field">
+                <span>Photo produit</span>
+                <input type="file" name="image_file" accept="image/png,image/jpeg,image/webp">
+              </label>
+              <div class="preview-box" id="product-image-preview">Aperçu image</div>
+              <div class="button-row">
+                <button class="btn btn-primary" type="submit">Enregistrer</button>
+                <button class="btn btn-secondary" type="button" id="product-reset-btn">Réinitialiser</button>
+              </div>
+            </form>
+
+            <form class="panel" id="site-settings-form">
+              <h3>Fond de la page d'accueil</h3>
+              <p class="muted">Ajoutez une photo pour remplacer le fond actuel de la page d'accueil.</p>
+              <label class="field">
+                <span>Image de fond</span>
+                <input type="file" name="home_background_file" accept="image/png,image/jpeg,image/webp">
+              </label>
+              <div class="preview-box" id="home-background-preview">Aucune image de fond</div>
+              <div class="button-row">
+                <button class="btn btn-primary" type="submit">Enregistrer le fond</button>
+                <button class="btn btn-secondary" type="button" id="clear-home-background-btn">Retirer le fond</button>
+              </div>
+            </form>
+          </section>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <div class="modal hidden" id="order-modal">
+    <div class="modal-card">
+      <button class="modal-close" id="close-order-modal" aria-label="Fermer">&times;</button>
+      <h3>Passer commande</h3>
+      <p class="muted" id="order-product-summary"></p>
+      <div class="order-reassurance">
+        <span>Confirmation rapide</span>
+        <span>Livraison organisée</span>
+        <span>Suivi par téléphone</span>
+      </div>
+      <form id="order-form">
+        <input type="hidden" name="product_id">
+        <div class="form-grid">
+          <label class="field">
+            <span>Nom complet</span>
+            <input type="text" name="customer_name" required>
+          </label>
+          <label class="field">
+            <span>Téléphone</span>
+            <input type="tel" name="phone" required>
+          </label>
+        </div>
+        <label class="field">
+          <span>Adresse</span>
+          <input type="text" name="address" required>
+        </label>
+        <label class="field">
+          <span>Ville</span>
+          <input type="text" name="city" required>
+        </label>
+        <label class="field">
+          <span>Moyen de paiement</span>
+          <select name="payment_method" required>
+            <option value="Orange Money">Orange Money</option>
+            <option value="Paiement à la livraison">Paiement à la livraison</option>
+          </select>
+        </label>
+        <label class="field">
+          <span>Notes</span>
+          <textarea name="notes" rows="3"></textarea>
+        </label>
+        <button class="btn btn-primary" type="submit">Confirmer la commande</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal hidden" id="product-modal">
+    <div class="modal-card modal-card-wide">
+      <button class="modal-close" id="close-product-modal" aria-label="Fermer">&times;</button>
+      <div class="product-detail" id="product-detail"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <script src="/app.js"></script>
+</body>
+</html>
